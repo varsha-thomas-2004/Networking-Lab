@@ -1,0 +1,562 @@
+ip a or ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s31f6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether a8:a1:59:ae:c2:69 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.2.107/22 brd 192.168.3.255 scope global noprefixroute enp0s31f6
+       valid_lft forever preferred_lft forever
+    inet6 fe80::de96:ab69:53dd:54c1/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: wlp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether b4:b0:24:86:97:fd brd ff:ff:ff:ff:ff:ff
+    inet 192.168.6.129/20 brd 192.168.15.255 scope global dynamic noprefixroute wlp1s0
+       valid_lft 17475sec preferred_lft 17475sec
+    inet6 fe80::fe63:4013:7e41:a0a3/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+traceroute google.com
+traceroute to google.com (142.250.193.174), 30 hops max, 60 byte packets
+ 1  14.139.184.209 (14.139.184.209)  6.828 ms  6.874 ms  6.972 ms
+ 2  10.162.68.217 (10.162.68.217)  23.559 ms  23.513 ms  23.462 ms
+ 3  10.162.9.249 (10.162.9.249)  23.416 ms  21.093 ms  23.326 ms
+ 4  10.255.236.93 (10.255.236.93)  23.303 ms  23.197 ms  23.182 ms
+ 5  10.119.73.122 (10.119.73.122)  23.250 ms  23.084 ms  23.170 ms
+ 6  72.14.195.128 (72.14.195.128)  33.393 ms  25.950 ms 72.14.213.20 (72.14.213.20)  28.386 ms
+ 7  * * *
+ 8  74.125.252.90 (74.125.252.90)  28.142 ms maa05s26-in-f14.1e100.net (142.250.193.174)  28.036 ms 142.251.55.60 (142.251.55.60)  27.951 ms
+
+ping -c 3 google.com
+PING google.com (142.250.193.174) 56(84) bytes of data.
+64 bytes from maa05s26-in-f14.1e100.net (142.250.193.174): icmp_seq=1 ttl=57 time=20.1 ms
+64 bytes from maa05s26-in-f14.1e100.net (142.250.193.174): icmp_seq=2 ttl=57 time=19.7 ms
+64 bytes from maa05s26-in-f14.1e100.net (142.250.193.174): icmp_seq=3 ttl=57 time=32.7 ms
+
+--- google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 19.726/24.146/32.654/6.017 ms
+
+netstat
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 user:52524              69.173.158.67:https     ESTABLISHED
+tcp        0      0 user:53232              69.173.144.154:https    ESTABLISHED
+tcp        0      0 user:38600              192.168.0.6:domain      TIME_WAIT  
+tcp        0      0 user:35010              lb-140-82-112-26-:https ESTABLISHED
+tcp        0      0 user:45680              blackcat.canonical:http TIME_WAIT  
+tcp        0      0 user:33548              142.0.76.34.bc.go:https ESTABLISHED
+tcp        0      0 user:41068              192.168.0.6:domain      TIME_WAIT  
+tcp        0      0 user:41068              192.168.0.6:domain      TIME_WAIT  
+udp        0      0 user:bootpc             192.168.0.4:bootps      ESTABLISHED
+udp        0      0 user:53719              maa05s14-in-f4.1e10:443 ESTABLISHED
+Active UNIX domain sockets (w/o servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  2      [ ]         DGRAM                    35227    /run/wpa_supplicant/wlp1s0
+unix  2      [ ]         DGRAM                    33757    /run/user/1001/systemd/notify
+unix  3      [ ]         DGRAM      CONNECTED     19853    /run/systemd/notify
+unix  2      [ ]         DGRAM                    19867    /run/systemd/journal/syslog
+unix  19     [ ]         DGRAM      CONNECTED     19877    /run/systemd/journal/dev-log
+unix  7      [ ]         DGRAM      CONNECTED     19881    /run/systemd/journal/socket
+unix  3      [ ]         SEQPACKET  CONNECTED     64164    @0000d
+unix  3      [ ]         SEQPACKET  CONNECTED     68238    @0000e
+unix  3      [ ]         SEQPACKET  CONNECTED     68240    @0000f
+unix  3      [ ]         SEQPACKET  CONNECTED     64163    @0000a
+unix  3      [ ]         SEQPACKET  CONNECTED     95311    @0000b
+unix  3      [ ]         SEQPACKET  CONNECTED     95312    @0000c
+unix  3      [ ]         STREAM     CONNECTED     45483    
+unix  3      [ ]         STREAM     CONNECTED     38900    
+unix  3      [ ]         STREAM     CONNECTED     52308    
+unix  3      [ ]         STREAM     CONNECTED     49546    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     47741    
+unix  3      [ ]         STREAM     CONNECTED     99595    
+unix  3      [ ]         STREAM     CONNECTED     49208    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     44300    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     50216    
+unix  3      [ ]         STREAM     CONNECTED     176134   
+unix  3      [ ]         STREAM     CONNECTED     47617    
+unix  3      [ ]         STREAM     CONNECTED     43336    
+unix  3      [ ]         STREAM     CONNECTED     36948    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     23396    
+unix  3      [ ]         STREAM     CONNECTED     175219   
+unix  2      [ ]         DGRAM      CONNECTED     164690   
+unix  3      [ ]         STREAM     CONNECTED     47817    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     43538    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     47816
+unix  3      [ ]         STREAM     CONNECTED     43966    
+unix  3      [ ]         STREAM     CONNECTED     43944    @/home/mec/.cache/ibus/dbus-xSqOI3K6
+unix  2      [ ]         DGRAM      CONNECTED     26596    
+unix  3      [ ]         STREAM     CONNECTED     47764    
+unix  3      [ ]         STREAM     CONNECTED     38711    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     44611    
+unix  3      [ ]         STREAM     CONNECTED     44488    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     47797    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     43001    
+unix  2      [ ]         DGRAM                    44228    
+unix  3      [ ]         STREAM     CONNECTED     68377    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     40850    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM      CONNECTED     28415    
+unix  3      [ ]         STREAM     CONNECTED     38597    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     44294    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     23197    
+unix  3      [ ]         STREAM     CONNECTED     68428    
+unix  3      [ ]         STREAM     CONNECTED     49206    
+unix  3      [ ]         STREAM     CONNECTED     40043    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     31951    
+unix  3      [ ]         STREAM     CONNECTED     86970    
+unix  3      [ ]         STREAM     CONNECTED     49448    
+unix  3      [ ]         STREAM     CONNECTED     29085    
+unix  3      [ ]         STREAM     CONNECTED     38901    
+unix  3      [ ]         STREAM     CONNECTED     49493    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     44475    @/tmp/dbus-DvEABGhoVs
+unix  3      [ ]         STREAM     CONNECTED     48839    
+unix  3      [ ]         STREAM     CONNECTED     40685    
+unix  3      [ ]         STREAM     CONNECTED     110382   
+unix  3      [ ]         STREAM     CONNECTED     99597    
+unix  3      [ ]         STREAM     CONNECTED     34155    
+unix  3      [ ]         STREAM     CONNECTED     49059    
+unix  3      [ ]         STREAM     CONNECTED     38726    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     176135   
+unix  3      [ ]         STREAM     CONNECTED     42455    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     38453    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     50215    
+unix  3      [ ]         STREAM     CONNECTED     29811    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     175218   
+unix  3      [ ]         STREAM     CONNECTED     68378    
+unix  3      [ ]         STREAM     CONNECTED     43540    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM      CONNECTED     40699    
+unix  3      [ ]         STREAM     CONNECTED     33329    
+unix  3      [ ]         STREAM     CONNECTED     154560   
+unix  3      [ ]         STREAM     CONNECTED     43965    
+unix  3      [ ]         STREAM     CONNECTED     51249    
+unix  3      [ ]         STREAM     CONNECTED     49491    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     49449    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     47622    
+unix  3      [ ]         STREAM     CONNECTED     44481    
+unix  3      [ ]         STREAM     CONNECTED     44459    @/tmp/.ICE-unix/1816
+unix  3      [ ]         STREAM     CONNECTED     42505    
+unix  3      [ ]         STREAM     CONNECTED     95414    
+unix  3      [ ]         STREAM     CONNECTED     49948    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     38655    
+unix  3      [ ]         STREAM     CONNECTED     86962    
+unix  3      [ ]         STREAM     CONNECTED     49482    
+unix  3      [ ]         STREAM     CONNECTED     29091    
+unix  2      [ ]         DGRAM      CONNECTED     29084    
+unix  3      [ ]         STREAM     CONNECTED     44478    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     46133    
+unix  3      [ ]         STREAM     CONNECTED     30280    /run/systemd/journal/stdout
+unix  3      [ ]         DGRAM      CONNECTED     23988    
+unix  3      [ ]         STREAM     CONNECTED     51362    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     49088    
+unix  3      [ ]         STREAM     CONNECTED     40846    
+unix  3      [ ]         STREAM     CONNECTED     99676    
+unix  3      [ ]         STREAM     CONNECTED     33960    
+unix  3      [ ]         STREAM     CONNECTED     49965    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     161823   /run/user/1001/pulse/native
+unix  3      [ ]         STREAM     CONNECTED     53614    
+unix  3      [ ]         STREAM     CONNECTED     45758    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     30455    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     175230   
+unix  3      [ ]         STREAM     CONNECTED     49526    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     49159    
+unix  3      [ ]         STREAM     CONNECTED     44297    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     44023    
+unix  3      [ ]         STREAM     CONNECTED     43396    
+unix  3      [ ]         STREAM     CONNECTED     47154    
+unix  3      [ ]         STREAM     CONNECTED     36814    
+unix  3      [ ]         STREAM     CONNECTED     35469    
+unix  3      [ ]         STREAM     CONNECTED     29116    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     44727    
+unix  3      [ ]         STREAM     CONNECTED     44692    
+unix  3      [ ]         STREAM     CONNECTED     49455    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     49271    
+unix  3      [ ]         STREAM     CONNECTED     33965    
+unix  2      [ ]         DGRAM                    51359    
+unix  3      [ ]         STREAM     CONNECTED     42992    
+unix  3      [ ]         STREAM     CONNECTED     49501    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     44479    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     53431    
+unix  3      [ ]         STREAM     CONNECTED     45631    
+unix  3      [ ]         STREAM     CONNECTED     48843    
+unix  3      [ ]         STREAM     CONNECTED     68381    
+unix  3      [ ]         STREAM     CONNECTED     34733    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     32346    
+unix  3      [ ]         STREAM     CONNECTED     161780   
+unix  3      [ ]         STREAM     CONNECTED     165396   
+unix  3      [ ]         STREAM     CONNECTED     47648    /run/user/1001/bus
+unix  2      [ ]         DGRAM      CONNECTED     33652    
+unix  3      [ ]         STREAM     CONNECTED     36962    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     23449    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     49057    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     49509    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     27966    
+unix  3      [ ]         STREAM     CONNECTED     95421    
+unix  3      [ ]         STREAM     CONNECTED     42458    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     99679    
+unix  3      [ ]         STREAM     CONNECTED     39037    
+unix  3      [ ]         STREAM     CONNECTED     47789    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     49086    
+unix  3      [ ]         STREAM     CONNECTED     43880    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     38898    
+unix  3      [ ]         STREAM     CONNECTED     44469    @/tmp/dbus-DvEABGhoVs
+unix  3      [ ]         STREAM     CONNECTED     36961    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     45523    
+unix  3      [ ]         STREAM     CONNECTED     40855    
+unix  3      [ ]         STREAM     CONNECTED     44418    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     44298    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     45502    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     49182    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     35346    
+unix  3      [ ]         STREAM     CONNECTED     23069    
+unix  3      [ ]         STREAM     CONNECTED     47803    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     49496    
+unix  3      [ ]         STREAM     CONNECTED     43006    /run/user/1001/pulse/native
+unix  3      [ ]         STREAM     CONNECTED     49454    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     44292    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     86960    
+unix  3      [ ]         STREAM     CONNECTED     49537    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     49457    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     45760    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     40841    
+unix  3      [ ]         STREAM     CONNECTED     33039    
+unix  3      [ ]         STREAM     CONNECTED     50872    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     51360    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     38660    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     31036    
+unix  3      [ ]         STREAM     CONNECTED     161781   
+unix  3      [ ]         STREAM     CONNECTED     50217    @/tmp/dbus-DvEABGhoVs
+unix  2      [ ]         DGRAM      CONNECTED     29109    
+unix  3      [ ]         STREAM     CONNECTED     29080    
+unix  3      [ ]         STREAM     CONNECTED     68379    
+unix  3      [ ]         STREAM     CONNECTED     49205    
+unix  3      [ ]         STREAM     CONNECTED     36931
+unix  3      [ ]         STREAM     CONNECTED     29096    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     92988    @/tmp/dbus-DvEABGhoVs
+unix  3      [ ]         STREAM     CONNECTED     47106    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     40849    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     28320    
+unix  3      [ ]         STREAM     CONNECTED     42461    
+unix  3      [ ]         STREAM     CONNECTED     48820    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     43628    
+unix  3      [ ]         STREAM     CONNECTED     36581    
+unix  3      [ ]         STREAM     CONNECTED     35344    
+unix  3      [ ]         STREAM     CONNECTED     30281    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     142827   
+unix  3      [ ]         STREAM     CONNECTED     46997    
+unix  3      [ ]         DGRAM      CONNECTED     33758    
+unix  2      [ ]         DGRAM                    29118    
+unix  3      [ ]         STREAM     CONNECTED     45312    
+unix  2      [ ]         DGRAM                    49143    
+unix  3      [ ]         STREAM     CONNECTED     44680    
+unix  3      [ ]         STREAM     CONNECTED     38710    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     42990    
+unix  3      [ ]         STREAM     CONNECTED     95413    
+unix  3      [ ]         STREAM     CONNECTED     43002    @/home/mec/.cache/ibus/dbus-xSqOI3K6
+unix  3      [ ]         STREAM     CONNECTED     38640    
+unix  3      [ ]         STREAM     CONNECTED     47565    
+unix  3      [ ]         STREAM     CONNECTED     44303    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     68384    
+unix  3      [ ]         STREAM     CONNECTED     44242    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     173217   
+unix  3      [ ]         STREAM     CONNECTED     49321    
+unix  3      [ ]         STREAM     CONNECTED     49276    
+unix  3      [ ]         STREAM     CONNECTED     29840    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     54673    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     55410    @/tmp/dbus-DvEABGhoVs
+unix  3      [ ]         STREAM     CONNECTED     44691    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     43934    
+unix  3      [ ]         STREAM     CONNECTED     43860    
+unix  3      [ ]         STREAM     CONNECTED     44248    
+unix  3      [ ]         STREAM     CONNECTED     51368    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     42882    @/home/mec/.cache/ibus/dbus-xSqOI3K6
+unix  3      [ ]         STREAM     CONNECTED     44304    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     33272    
+unix  3      [ ]         STREAM     CONNECTED     29101    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     84392    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     49087    
+unix  3      [ ]         STREAM     CONNECTED     49272    
+unix  3      [ ]         STREAM     CONNECTED     51203    
+unix  3      [ ]         STREAM     CONNECTED     38662    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     42896    @/home/mec/.cache/ibus/dbus-xSqOI3K6
+unix  3      [ ]         STREAM     CONNECTED     42881    @/home/mec/.cache/ibus/dbus-xSqOI3K6
+unix  3      [ ]         STREAM     CONNECTED     49158    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     40492    @/tmp/dbus-XK8ONHfL
+unix  3      [ ]         STREAM     CONNECTED     35107    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     30279    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     30278    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     49201    
+unix  3      [ ]         STREAM     CONNECTED     45271    /run/dbus/system_bus_socket
+unix  3      [ ]         DGRAM      CONNECTED     33759    
+unix  3      [ ]         STREAM     CONNECTED     99624    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     45526    
+unix  3      [ ]         STREAM     CONNECTED     44681    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14292    
+unix  3      [ ]         STREAM     CONNECTED     86959    
+unix  3      [ ]         STREAM     CONNECTED     49103    
+unix  3      [ ]         STREAM     CONNECTED     47740    
+unix  3      [ ]         STREAM     CONNECTED     49503    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     44474    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     47570    
+unix  3      [ ]         STREAM     CONNECTED     42450    
+unix  3      [ ]         STREAM     CONNECTED     95412    
+unix  3      [ ]         STREAM     CONNECTED     49576    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     173230   
+unix  3      [ ]         STREAM     CONNECTED     49484    
+unix  3      [ ]         STREAM     CONNECTED     49452    /run/systemd/journal/stdout
+unix  3      [ ]         SEQPACKET  CONNECTED     68241    
+unix  3      [ ]         SEQPACKET  CONNECTED     68239    
+unix  3      [ ]         STREAM     CONNECTED     84411    
+unix  3      [ ]         STREAM     CONNECTED     44468    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     48772    
+unix  3      [ ]         STREAM     CONNECTED     33244    
+unix  3      [ ]         STREAM     CONNECTED     26610    
+unix  3      [ ]         STREAM     CONNECTED     46044    
+unix  3      [ ]         STREAM     CONNECTED     51710    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     48083    
+unix  3      [ ]         STREAM     CONNECTED     47792    
+unix  3      [ ]         STREAM     CONNECTED     44476    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     51202    
+unix  2      [ ]         DGRAM      CONNECTED     45224    
+unix  3      [ ]         STREAM     CONNECTED     86839    
+unix  3      [ ]         STREAM     CONNECTED     49510    /run/systemd/journal/stdout
+unix  3      [ ]         DGRAM      CONNECTED     19854    
+unix  3      [ ]         STREAM     CONNECTED     44461    @/tmp/dbus-DvEABGhoVs
+unix  3      [ ]         STREAM     CONNECTED     28411    
+unix  2      [ ]         DGRAM      CONNECTED     30289    
+unix  3      [ ]         STREAM     CONNECTED     36982    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     161576   
+unix  3      [ ]         STREAM     CONNECTED     43844    
+unix  3      [ ]         STREAM     CONNECTED     43762    
+unix  3      [ ]         STREAM     CONNECTED     42506    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     86838    
+unix  3      [ ]         STREAM     CONNECTED     47801    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     42918    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     38739    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     42408    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     45545    
+unix  3      [ ]         STREAM     CONNECTED     171490   
+unix  3      [ ]         STREAM     CONNECTED     68425    
+unix  3      [ ]         STREAM     CONNECTED     38487    
+unix  3      [ ]         STREAM     CONNECTED     50219    @/tmp/dbus-DvEABGhoVs
+unix  3      [ ]         STREAM     CONNECTED     38797    
+unix  3      [ ]         STREAM     CONNECTED     50238    
+unix  3      [ ]         STREAM     CONNECTED     42993    @/tmp/dbus-DvEABGhoVs
+unix  3      [ ]         STREAM     CONNECTED     42463    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     45216    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     44712    
+unix  3      [ ]         STREAM     CONNECTED     38725    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     51261    
+unix  3      [ ]         STREAM     CONNECTED     49513    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     56347    
+unix  3      [ ]         STREAM     CONNECTED     46038    
+unix  3      [ ]         STREAM     CONNECTED     51354    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     45540    /run/user/1001/bus
+unix  3      [ ]         STREAM     CONNECTED     43868    
+unix  3      [ ]         STREAM     CONNECTED     53424    
+unix  3      [ ]         STREAM     CONNECTED     38796    
+unix  3      [ ]         STREAM     CONNECTED     33274    
+unix  2      [ ]         DGRAM      CONNECTED     32839
+(And it goes on...)
+
+ifconfig
+enp0s31f6: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.2.107  netmask 255.255.252.0  broadcast 192.168.3.255
+        inet6 fe80::de96:ab69:53dd:54c1  prefixlen 64  scopeid 0x20<link>
+        ether a8:a1:59:ae:c2:69  txqueuelen 1000  (Ethernet)
+        RX packets 375758  bytes 113729762 (113.7 MB)
+        RX errors 0  dropped 31599  overruns 0  frame 0
+        TX packets 4214  bytes 540704 (540.7 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 16  memory 0x9f900000-9f920000  
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 2192  bytes 256282 (256.2 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2192  bytes 256282 (256.2 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.6.129  netmask 255.255.240.0  broadcast 192.168.15.255
+        inet6 fe80::fe63:4013:7e41:a0a3  prefixlen 64  scopeid 0x20<link>
+        ether b4:b0:24:86:97:fd  txqueuelen 1000  (Ethernet)
+        RX packets 281329  bytes 106085809 (106.0 MB)
+        RX errors 0  dropped 22197  overruns 0  frame 0
+        TX packets 30967  bytes 5909652 (5.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+arp
+Address                  HWtype  HWaddress           Flags Mask            Iface
+192.168.0.82             ether   c0:74:ad:74:52:bc   C                     enp0s31f6
+_gateway                 ether   18:66:da:a3:a7:f4   C                     enp0s31f6
+192.168.0.4              ether   f4:4d:30:1e:c8:d3   C                     wlp1s0
+192.168.0.2              ether   18:66:da:a3:a7:f4   C                     enp0s31f6
+192.168.0.81             ether   c0:74:ad:74:48:d4   C                     enp0s31f6
+192.168.0.6              ether   2c:27:d7:2f:ab:f0   C                     wlp1s0
+192.168.7.187            ether   50:46:5d:52:bd:78   C                     wlp1s0
+192.168.0.61             ether   00:15:60:2e:6b:40   C                     enp0s31f6
+192.168.10.0             ether   48:0f:cf:cd:54:96   C                     enp0s31f6
+192.168.6.87             ether   54:b8:02:1e:86:69   C                     wlp1s0
+192.168.0.8              ether   00:80:91:b9:28:50   C                     enp0s31f6
+192.168.6.87             ether   54:b8:02:1e:86:69   C                     enp0s31f6
+_gateway                 ether   00:90:27:e6:36:c8   C                     wlp1s0
+192.168.0.86             ether   c0:74:ad:a8:4d:54   C                     enp0s31f6
+192.168.0.6              ether   2c:27:d7:2f:ab:f0   C                     enp0s31f6
+192.168.0.5              ether   88:25:10:f1:ec:40   C                     enp0s31f6
+192.168.0.84             ether   c0:74:ad:74:52:84   C                     enp0s31f6
+192.168.0.4              ether   f4:4d:30:1e:c8:d3   C                     enp0s31f6
+
+whois google.com
+   Domain Name: GOOGLE.COM
+   Registry Domain ID: 2138514_DOMAIN_COM-VRSN
+   Registrar WHOIS Server: whois.markmonitor.com
+   Registrar URL: http://www.markmonitor.com
+   Updated Date: 2019-09-09T15:39:04Z
+   Creation Date: 1997-09-15T04:00:00Z
+   Registry Expiry Date: 2028-09-14T04:00:00Z
+   Registrar: MarkMonitor Inc.
+   Registrar IANA ID: 292
+   Registrar Abuse Contact Email: abusecomplaints@markmonitor.com
+   Registrar Abuse Contact Phone: +1.2086851750
+   Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+   Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+   Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+   Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+   Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+   Domain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited
+   Name Server: NS1.GOOGLE.COM
+   Name Server: NS2.GOOGLE.COM
+   Name Server: NS3.GOOGLE.COM
+   Name Server: NS4.GOOGLE.COM
+   DNSSEC: unsigned
+   URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of whois database: 2024-12-19T05:52:13Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+NOTICE: The expiration date displayed in this record is the date the
+registrar's sponsorship of the domain name registration in the registry is
+currently set to expire. This date does not necessarily reflect the expiration
+date of the domain name registrant's agreement with the sponsoring
+registrar.  Users may consult the sponsoring registrar's Whois database to
+view the registrar's reported date of expiration for this registration.
+
+TERMS OF USE: You are not authorized to access or query our Whois
+database through the use of electronic processes that are high-volume and
+automated except as reasonably necessary to register domain names or
+modify existing registrations; the Data in VeriSign Global Registry
+Services' ("VeriSign") Whois database is provided by VeriSign for
+information purposes only, and to assist persons in obtaining information
+about or related to a domain name registration record. VeriSign does not
+guarantee its accuracy. By submitting a Whois query, you agree to abide
+by the following terms of use: You agree that you may use this Data only
+for lawful purposes and that under no circumstances will you use this Data
+to: (1) allow, enable, or otherwise support the transmission of mass
+unsolicited, commercial advertising or solicitations via e-mail, telephone,
+or facsimile; or (2) enable high volume, automated, electronic processes
+that apply to VeriSign (or its computer systems). The compilation,
+repackaging, dissemination or other use of this Data is expressly
+prohibited without the prior written consent of VeriSign. You agree not to
+use electronic processes that are automated and high-volume to access or
+query the Whois database except as reasonably necessary to register
+domain names or modify existing registrations. VeriSign reserves the right
+to restrict your access to the Whois database in its sole discretion to ensure
+operational stability.  VeriSign may restrict or terminate your access to the
+Whois database for failure to abide by these terms of use. VeriSign
+reserves the right to modify these terms at any time.
+The Registry database contains ONLY .COM, .NET, .EDU domains and
+Registrars.
+Domain Name: google.com
+Registry Domain ID: 2138514_DOMAIN_COM-VRSN
+Registrar WHOIS Server: whois.markmonitor.com
+Registrar URL: http://www.markmonitor.com
+Updated Date: 2024-08-02T02:17:33+0000
+Creation Date: 1997-09-15T07:00:00+0000
+Registrar Registration Expiration Date: 2028-09-13T07:00:00+0000
+Registrar: MarkMonitor, Inc.
+Registrar IANA ID: 292
+Registrar Abuse Contact Email: abusecomplaints@markmonitor.com
+Registrar Abuse Contact Phone: +1.2086851750
+Domain Status: clientUpdateProhibited (https://www.icann.org/epp#clientUpdateProhibited)
+Domain Status: clientTransferProhibited (https://www.icann.org/epp#clientTransferProhibited)
+Domain Status: clientDeleteProhibited (https://www.icann.org/epp#clientDeleteProhibited)
+Domain Status: serverUpdateProhibited (https://www.icann.org/epp#serverUpdateProhibited)
+Domain Status: serverTransferProhibited (https://www.icann.org/epp#serverTransferProhibited)
+Domain Status: serverDeleteProhibited (https://www.icann.org/epp#serverDeleteProhibited)
+Registrant Organization: Google LLC
+Registrant State/Province: CA
+Registrant Country: US
+Registrant Email: Select Request Email Form at https://domains.markmonitor.com/whois/google.com
+Admin Organization: Google LLC
+Admin State/Province: CA
+Admin Country: US
+Admin Email: Select Request Email Form at https://domains.markmonitor.com/whois/google.com
+Tech Organization: Google LLC
+Tech State/Province: CA
+Tech Country: US
+Tech Email: Select Request Email Form at https://domains.markmonitor.com/whois/google.com
+Name Server: ns4.google.com
+Name Server: ns1.google.com
+Name Server: ns2.google.com
+Name Server: ns3.google.com
+DNSSEC: unsigned
+URL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/
+>>> Last update of WHOIS database: 2024-12-19T05:49:27+0000 <<<
+
+For more information on WHOIS status codes, please visit:
+  https://www.icann.org/resources/pages/epp-status-codes
+
+If you wish to contact this domain’s Registrant, Administrative, or Technical
+contact, and such email address is not visible above, you may do so via our web
+form, pursuant to ICANN’s Temporary Specification. To verify that you are not a
+robot, please enter your email address to receive a link to a page that
+facilitates email communication with the relevant contact(s).
+
+Web-based WHOIS:
+  https://domains.markmonitor.com/whois
+
+If you have a legitimate interest in viewing the non-public WHOIS details, send
+your request and the reasons for your request to whoisrequest@markmonitor.com
+and specify the domain name in the subject line. We will review that request and
+may ask for supporting documentation and explanation.
+
+The data in MarkMonitor’s WHOIS database is provided for information purposes,
+and to assist persons in obtaining information about or related to a domain
+name’s registration record. While MarkMonitor believes the data to be accurate,
+the data is provided "as is" with no guarantee or warranties regarding its
+accuracy.
+
+By submitting a WHOIS query, you agree that you will use this data only for
+lawful purposes and that, under no circumstances will you use this data to:
+  (1) allow, enable, or otherwise support the transmission by email, telephone,
+or facsimile of mass, unsolicited, commercial advertising, or spam; or
+  (2) enable high volume, automated, or electronic processes that send queries,
+data, or email to MarkMonitor (or its systems) or the domain name contacts (or
+its systems).
+
+MarkMonitor reserves the right to modify these terms at any time.
+
+By submitting this query, you agree to abide by this policy.
+
+MarkMonitor Domain Management(TM)
+Protecting companies and consumers in a digital world.
+
+Visit MarkMonitor at https://www.markmonitor.com
+Contact us at +1.8007459229
+In Europe, at +44.02032062220
+--
+
+nslookup google.com
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 142.250.196.78
+Name:	google.com
+Address: 2404:6800:4007:821::200e
+
